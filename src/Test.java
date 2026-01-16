@@ -18,6 +18,7 @@ public class Test {
             }System.out.println(dotCount);
         }catch (IOException e){
             System.out.println("Error! " + e.getMessage());
+            System.out.println("Hello");
         }
     }
 }
