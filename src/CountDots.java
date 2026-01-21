@@ -15,9 +15,7 @@ public class CountDots {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
             int ch;
             while ((ch = reader.read()) != -1){
-                System.out.println(ch);
                 if (ch == '.'){
-                    System.out.println(true);
                     count++;
                 }
             }
