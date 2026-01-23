@@ -4,12 +4,8 @@ public class RightTriangle {
     private double cathet1;
     private double cathet2;
     private double hypotenuse;
-    private double area;
-    private double perimeter;
 
     public RightTriangle(double cathet1, double cathet2){
-//        this.cathet1 = cathet1;
-//        this.cathet2 = cathet2;
         setCathet1(cathet1);
         setCathet2(cathet2);
     }
@@ -28,32 +24,14 @@ public class RightTriangle {
         this.cathet2 = cathet2;
     }
 
-    public double getCathet1() {
-        return cathet1;
-    }
-
-    public double getCathet2() {
-        return cathet2;
-    }
-
     public void calculateHypotenuse() {
         hypotenuse = Math.hypot(cathet1, cathet2);
-    }
-
-    public void calculateArea(){
-        area = (cathet1 * cathet2)/2;
-    }
-
-    public void calculatePerimeter(){
-        perimeter = cathet1 + cathet2 + hypotenuse;
     }
 
     public void printInfo(){
         System.out.println("Катет 1 = " + cathet1);
         System.out.println("Катет 2 = " + cathet2);
         System.out.println("Гипотенуза = " + hypotenuse);
-        System.out.println("Площадь треугольника = " + area);
-        System.out.println("Периметр треугольника = " + perimeter);
     }
 
     public void printHypotenuse() {
@@ -75,8 +53,6 @@ public class RightTriangle {
         }
         RightTriangle triangle = new RightTriangle(c1, c2);
         triangle.calculateHypotenuse();
-        triangle.calculateArea();
-        triangle.calculatePerimeter();
         triangle.printInfo();
 
         scanner.close();
