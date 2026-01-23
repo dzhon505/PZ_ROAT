@@ -1,31 +1,39 @@
-import java.io.*;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class ReverseFile {
     public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.print("Введите имя входного файла: ");
-            String inputFile = reader.readLine();
-            System.out.print("Введите имя выходного файла: ");
-            String outputFile = reader.readLine();
+        Scanner scanner = new Scanner(System.in);
 
-            // Чтение всех байтов из входного файла
-            byte[] bytes = Files.readAllBytes(Paths.get(inputFile));
+        System.out.print("Введите имя (или путь) первого файла: ");
+        String file1Name = scanner.nextLine();
 
-            // Разворот массива байтов
-            for (int i = 0; i < bytes.length / 2; i++) {
-                byte temp = bytes[i];
-                bytes[i] = bytes[bytes.length - 1 - i];
-                bytes[bytes.length - 1 - i] = temp;
+        System.out.print("Введите имя (или путь) второго файла: ");
+        String file2Name = scanner.nextLine();
+
+        Path path1 = Paths.get(file1Name);
+        Path path2 = Paths.get(file2Name);
+
+        try {
+            byte[] data = Files.readAllBytes(path1);
+            System.out.println("Прочитано байт из " + file1Name + ": " + data.length);
+
+            for (int i = 0; i < data.length / 2; i++) {
+                byte temp = data[i];
+                data[i] = data[data.length - 1 - i];
+                data[data.length - 1 - i] = temp;
             }
 
-            // Запись в выходной файл
-            Files.write(Paths.get(outputFile), bytes);
+            Files.write(path2, data);
+            System.out.println("Готово: " + file1Name + " → " + file2Name + " (обратный порядок)");
 
-            System.out.println("Файл успешно записан в обратном порядке.");
         } catch (IOException e) {
-            System.err.println("Ошибка при работе с файлами: " + e.getMessage());
+            System.out.println("Ошибка при работе с файлами: " + e.getMessage());
         }
+
+        scanner.close();
     }
 }
