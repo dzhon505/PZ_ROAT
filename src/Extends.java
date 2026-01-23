@@ -32,9 +32,18 @@ public class Extends {
         Bird bird = new Bird();
         Fish fish = new Fish();
 
+        System.out.println("=== Отдельные вызовы ===");
         animal.move();
         cat.move();
         bird.move();
         fish.move();
+
+        System.out.println("\n=== Полиморфизм через массив ===");
+
+        Animal[] animals = {animal, cat, bird, fish};
+
+        for (Animal a : animals) {
+            a.move();
+        }
     }
 }
