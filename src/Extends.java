@@ -1,4 +1,3 @@
-// Файл: Main.java
 public class Extends {
     static class Animal {
         public void move() {
